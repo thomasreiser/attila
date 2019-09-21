@@ -8,6 +8,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     config: {
       'cssSrcDir': 'src/sass',
+      'cssLibDir': 'src/css',
       'cssTargetDir': 'css',
       'jsSrcDir': 'src/js',
       'jsTargetDir': 'js'
@@ -83,6 +84,20 @@ module.exports = function(grunt) {
         tasks: ['sass:dev', 'copy:dev', 'postcss:dev']
       }
     },
+    cssmin: {
+      options: {
+        mergeIntoShorthands: false,
+        roundingPrecision: -1
+      },
+      target: {
+        files: {
+          'assets/<%=  config.cssTargetDir %>/style.css': [
+            'assets/<%=  config.cssTargetDir %>/style.css',
+            '<%=  config.cssLibDir %>/*.css'
+          ]
+        }
+      }
+    },
     zip: {
       dist: {
         src: [
@@ -106,12 +121,14 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'sass:dist',
     'postcss:dist',
+    'cssmin',
     'copy:dist',
     'uglify'
   ]);
   grunt.registerTask('default', [
     'sass:dev',
     'postcss:dev',
+    'cssmin',
     'copy:dev',
     'uglify',
     'watch'
