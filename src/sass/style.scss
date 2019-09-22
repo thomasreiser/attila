@@ -1827,7 +1827,33 @@ img {
 
 
 @media only screen and (max-width: 320px) {
-	.pagination .pagination-label {
+    .pagination .pagination-label {
 		display: none;
 	}
+}
+
+/* ==========================================================================
+   Media Queries - Dark mode
+   ========================================================================== */
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #212226;
+    }
+    blockquote, .nav-button a, .post-tags a:focus, .post-tags a:hover {
+        background: #1a1a1a;
+    }
+    body, b, strong, a, em, blockquote, ol>li:before, ul>li:before {
+        color: #bbb;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: #dedede;
+    }
+    a:focus, a:hover {
+        color: #f26a3d;
+    }
+    .nav-button a {
+        background
+    }
 }
