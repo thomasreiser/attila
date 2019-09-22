@@ -1841,7 +1841,7 @@ img {
     body {
         background: #212226;
     }
-    blockquote, .nav-button a, .post-tags a:focus, .post-tags a:hover, .post-share a:focus, .post-share a:hover {
+    blockquote, .nav-button a, .post-tags a:focus, .post-tags a:hover, .post-share a:focus, .post-share a:hover, .container .post:after, .pagination:after {
         background: #1a1a1a;
     }
     blockquote {
@@ -1850,10 +1850,13 @@ img {
     body, b, strong, a, em, blockquote, ol>li:before, ul>li:before {
         color: #bbb;
     }
-    h1, h2, h3, h4, h5, h6 {
+    h1, h2, h3, h4, h5, h6, .post-title {
         color: #dedede;
     }
     a:focus, a:hover, .post-tags a:focus, .post-tags a:hover {
         color: #f26a3d;
+    }
+    .post-meta a:focus, .post-meta a:hover {
+        border-color: #f26a3d;
     }
 }
