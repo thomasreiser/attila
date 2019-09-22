@@ -1844,6 +1844,9 @@ img {
     blockquote, .nav-button a, .post-tags a:focus, .post-tags a:hover, .post-share a:focus, .post-share a:hover {
         background: #1a1a1a;
     }
+    blockquote {
+        border-left-color: #bbb;
+    }
     body, b, strong, a, em, blockquote, ol>li:before, ul>li:before {
         color: #bbb;
     }
