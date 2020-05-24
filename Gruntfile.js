@@ -8,10 +8,22 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     config: {
       'cssSrcDir': 'src/sass',
+<<<<<<< HEAD
       'cssLibDir': 'src/css',
       'cssTargetDir': 'css',
+=======
+      'cssTargetDir': 'assets/css',
+>>>>>>> upstream/master
       'jsSrcDir': 'src/js',
-      'jsTargetDir': 'js'
+      'jsTargetDir': 'assets/js',
+      'jsDependencies': [
+        '<%= config.jsSrcDir %>/libs/jquery.min.js',
+        '<%= config.jsSrcDir %>/libs/jquery.fitvids.js',
+        '<%= config.jsSrcDir %>/libs/jquery.history.js',
+        '<%= config.jsSrcDir %>/libs/highlight.pack.js',
+        '<%= config.jsSrcDir %>/libs/nprogress.js',
+        'node_modules/ghosthunter/dist/jquery.ghosthunter.js'
+      ]
     },
     copy: {
       dev: {
@@ -43,7 +55,7 @@ module.exports = function(grunt) {
           sourceMaps: true
         },
         files: {
-          'assets/<%=  config.cssTargetDir %>/style.css': '<%=  config.cssSrcDir %>/style.scss'
+          '<%= config.cssTargetDir %>/style.css': '<%= config.cssSrcDir %>/style.scss'
         }
       },
       dist: {
@@ -51,30 +63,28 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'assets/<%=  config.cssTargetDir %>/style.css': '<%=  config.cssSrcDir %>/style.scss'
+          '<%= config.cssTargetDir %>/style.css': '<%= config.cssSrcDir %>/style.scss'
         }
       }
     },
     postcss: {
       options: {
-        map: true,
-        processors: [
-          require('autoprefixer')({
-            browsers: ['last 2 versions']
-          })
-        ]
+        map: false
       },
       dev: {
-        src: 'assets/<%=  config.cssTargetDir %>/*.css'
+        src: '<%=  config.cssTargetDir %>/*.css'
       },
       dist: {
-        src: 'assets/<%=  config.cssTargetDir %>/*.css'
+        src: '<%=  config.cssTargetDir %>/*.css'
       }
     },
     uglify: {
       js: {
         files: {
-          'assets/<%=  config.jsTargetDir %>/script.js': ['<%=  config.jsSrcDir %>/libs/jquery-*.js', '<%=  config.jsSrcDir %>/**/*.js']
+          '<%= config.jsTargetDir %>/script.js': [
+            '<%= config.jsDependencies %>',
+            '<%= config.jsSrcDir %>/script.js'
+          ]
         }
       }
     },
@@ -82,8 +92,13 @@ module.exports = function(grunt) {
       css: {
         files: '<%=  config.cssSrcDir %>/**/*.scss',
         tasks: ['sass:dev', 'copy:dev', 'postcss:dev']
+      },
+      js: {
+        files: '<%=  config.jsSrcDir %>/**/*.js',
+        tasks: ['uglify']
       }
     },
+<<<<<<< HEAD
     cssmin: {
       options: {
         mergeIntoShorthands: false,
@@ -115,6 +130,31 @@ module.exports = function(grunt) {
         ],
         dest: `dist/${require('./package.json').name}.zip`
       }
+=======
+    compress: {
+      main: {
+        options: {
+          archive: `dist/${require('./package.json').name}.zip`,
+          level: 9
+        },
+        files: [{
+          src: [
+            '**',
+            '!node_modules',
+            '!node_modules/**',
+            '!src',
+            '!src/**',
+            '!dist',
+            '!dist/**',
+            '!.git',
+            '!.gitignore',
+            '!Gruntfile.js',
+            '!package-lock.json'
+          ],
+          dest: '.'
+        }]
+      },
+>>>>>>> upstream/master
     }
   });
 

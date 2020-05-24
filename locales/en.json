@@ -1,5 +1,5 @@
 {
-    "Blog Logo": "Blog Logo",
+    "Logo": "Logo",
     "Close": "Close",
     "Get the latest posts delivered right to your inbox.": "Get the latest posts delivered right to your inbox.",
     "Home": "Home",
@@ -14,8 +14,9 @@
     "Theme": "Theme",
     "Website": "Website",
     "Your email address": "Your email address",
-    "by": "by",
-    "on ": "on ",
+    "By": "By",
+    "on": "on",
+    "in": "in",
     "No Posts": "No Posts",
     "% Post": "% Post",
     "% Posts": "% Posts",
@@ -23,5 +24,10 @@
     "youremail@example.com": "youremail@example.com",
     "1 min read": "1 min read",
     "% min read": "% min read",
-    "Imprint": "Imprint"
+    "Imprint": "Imprint",
+    "Article": "Article",
+    "Author": "Author",
+    "Topic": "Topic",
+    "Share": "Share",
+    "Search": "Search"
 }
